@@ -1,7 +1,7 @@
-from django.contrib import admin
-from django.urls import path, include
-from outputDB import views
+from django.urls import path
+from app.outputDB import views
 
 urlpatterns = [
-    path('getStudent', views.queryGetStudent)
+    path('getStudentCourse', views.queryGetStudentCourse),
+    path('addStudentCourse', views.queryAddStudentCourse)
 ]

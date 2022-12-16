@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: DB STUDENT API
+  version: 0.0.01
+  description: Предназначена для вывода и ввода данных в БД STUDENT
+paths:
+  /api/getStudentView/{num}/{name}/{surname}/{patronymic}:
+    get:
+      operationId: api_getStudentView_retrieve
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: num
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: patronymic
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: surname
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+  /api/setSoftwareView/{num}/{name}/{surname}/{patronymic}:
+    get:
+      operationId: api_setSoftwareView_retrieve
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: num
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: patronymic
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: surname
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+        num:
+          type: string
+          maxLength: 7
+        name:
+          type: string
+        surname:
+          type: string
+        patronymic:
+          type: string
+      required:
+      - id
+      - name
+      - num
+      - patronymic
+      - surname
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

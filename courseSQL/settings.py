@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'outputDB',
-    'saveDB'
+    'saveDB',
+    'rest_framework',
+    'app.api',
+    'drf_spectacular'
 ]
 
 MIDDLEWARE = [
@@ -119,8 +122,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'DB STUDENT COURSE API',
+    'DESCRIPTION': 'Предназначена для вывода и ввода данных в БД STUDENT_COURSE',
+    'VERSION': '0.0.01',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
